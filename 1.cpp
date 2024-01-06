@@ -1,0 +1,58 @@
+#include <iostream>
+
+class Circle {
+private:
+    double radius;  // Private member variable
+
+public:
+    // Public method to set the radius
+    void setRadius(double r) {
+        if (r >= 0) {
+            radius = r;
+        } else {
+            std::cout << "Invalid radius. Setting radius to 0." << std::endl;
+            radius = 0;
+        }
+    }
+
+    // Public method to get the radius
+    double getRadius() const {
+        return radius;
+    }
+
+    // Public method to calculate and display the area
+    void calculateAndDisplayAreaPublic() {
+        double area = 3.14159 * radius * radius;
+        std::cout << "Public Method: Area of circle with radius " << radius << " is " << area << std::endl;
+    }
+
+private:
+    // Private method to calculate and display the area
+    void calculateAndDisplayAreaPrivate() {
+        double area = 3.14159 * radius * radius;
+        std::cout << "Private Method: Area of circle with radius " << radius << " is " << area << std::endl;
+    }
+
+protected:
+    // Protected method to calculate and display the area
+    void calculateAndDisplayAreaProtected() {
+        double area = 3.14159 * radius * radius;
+        std::cout << "Protected Method: Area of circle with radius " << radius << " is " << area << std::endl;
+    }
+};
+
+int main() {
+    Circle myCircle;
+
+    // Using public methods
+    myCircle.setRadius(5.0);
+    myCircle.calculateAndDisplayAreaPublic();
+
+    // Uncommenting the line below will result in a compilation error since calculateAndDisplayAreaPrivate is private.
+    // myCircle.calculateAndDisplayAreaPrivate();
+
+    // Uncommenting the line below will result in a compilation error since calculateAndDisplayAreaProtected is protected.
+    // myCircle.calculateAndDisplayAreaProtected();
+
+    return 0;
+}
